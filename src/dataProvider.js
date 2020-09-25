@@ -223,7 +223,7 @@ const DataProvider = {
             })
             return ExtensionDelete.then(res => {
                 console.log(res.data.data.id);
-                return Promise.resolve(res.data.data);
+                return Promise.resolve(res.data);
             }, ({ reason }) => {
                 return Promise.reject(reason);
 

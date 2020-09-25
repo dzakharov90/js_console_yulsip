@@ -28,13 +28,6 @@ const App = () => (
         dashboard={Dashboard}
         i18nProvider={i18nProvider}
         layout={Layout}
-        customRoutes={[
-            <Route
-                exact
-                path="/Profile"
-                component={props => <Profile {...props} />}
-            />,
-        ]}
     >
         {permissions => [
             permissions === 'superadmin' || permissions === 'reseller' || permissions === 'useradmin'
