@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useAuthenticated } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
@@ -94,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard() {
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+  useAuthenticated();
   return (
     <div className={classes.root}>
       <CssBaseline />
