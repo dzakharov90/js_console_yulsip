@@ -1,0 +1,79 @@
+{
+  "name": "console.yulsip.com",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@coreui/icons-react": "^1.0.1",
+    "@coreui/react": "^3.0.4",
+    "@lingui/react": "^2.9.1",
+    "@material-ui/core": "^4.10.0",
+    "@material-ui/lab": "^4.0.0-alpha.54",
+    "@nestjs/jwt": "^7.0.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/material-ui": "^0.21.7",
+    "admin-on-rest": "^1.4.1",
+    "axios": "^0.19.2",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-dotenv": "^0.1.1",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "babelrc": "0.0.7",
+    "bootstrap4-toggle": "^3.6.1",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "env-cmd": "^10.1.0",
+    "graphql": "^15.3.0",
+    "install": "^0.13.0",
+    "jwt-decode": "^2.2.0",
+    "material-ui": "^0.20.2",
+    "material-ui-audio-player": "^1.2.0",
+    "md5": "^2.2.1",
+    "mdbreact": "^4.27.0",
+    "metro-react-native-babel-preset": "^0.63.0",
+    "passport-jwt": "^4.0.0",
+    "prop-types": "^15.7.2",
+    "proxy-polyfill": "^0.3.2",
+    "ra-data-graphql-simple": "^3.8.3",
+    "ra-data-json-server": "^3.5.3",
+    "ra-data-simple-rest": "^3.3.2",
+    "ra-jsonapi-client": "^0.7.0",
+    "ra-language-french": "^3.8.5",
+    "react": "^16.13.1",
+    "react-admin": "^3.5.3",
+    "react-admin-firebase": "^3.1.23",
+    "react-app-polyfill": "^1.0.6",
+    "react-audio-player": "^0.13.0",
+    "react-dom": "^16.13.1",
+    "react-native-dotenv": "^2.4.0",
+    "react-router-auth": "^1.0.1",
+    "react-scripts": "^3.4.3",
+    "reactstrap": "^8.5.1",
+    "recharts": "^1.8.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "dotenv": "^8.2.0"
+  }
+}
