@@ -22,9 +22,13 @@ const cdrfilter = (props) => (
     </Filter>
 );
 
-const CdrList = props => {
+const CdrList = ( props, resources ) => {
+
+    const player = resources[props.resource]
+    console.log(resources)
+
     return (
-        <List filters={<cdrfilter />} {...props}>
+        <List filters={<cdrfilter />} {...props} accept="audio/*" >
             <Datagrid>
                 <TextField source='caller_id_number' label='From Number' sortable={false} />
                 <TextField source="destination_number" label='To Number' sortable={false} />
@@ -35,13 +39,14 @@ const CdrList = props => {
                 <TextField source="answersec" label='Wait for answer' sortable={false} />
                 <TextField source="billsec" label='Billing duration' sortable={false} />
                 <AudioPlayer
-                    src={'recordlink'}
+                    src='recordlink'
                     label='Recording' 
                     sortable={false} 
                     download={true}
-                    spacing={1}
+                    spacing={0}
                     elevation={1}
-                    width="100%"
+                    width="75%"
+                    height="20%"
                     loop={false}
                     preload={false}
                 />

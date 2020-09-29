@@ -1,9 +1,9 @@
-import { useNotify, AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_GET_PERMISSIONS } from 'react-admin';
+import { useNotify, useRefresh, AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_GET_PERMISSIONS } from 'react-admin';
+import { APP_BASE_URL } from './config';
 import axios from 'axios';
 //import decodeJwt from 'jwt-decode';
 //import CryptoJS from 'crypto-js';
 import crypto from 'crypto';
-
 
 
 export default async (type, params) => {
@@ -13,7 +13,7 @@ export default async (type, params) => {
     let logindata = (username + ":" + password);
     const credentials = crypto.createHash('md5').update(logindata).digest("hex");
 
-    return axios.put('https://api.yulsip.com/api/v1/user_auth', data, {
+    return axios.put(`${APP_BASE_URL}/user_auth`, data, {
       params: {
         'credentials': credentials,
         'realm': realm,
@@ -52,9 +52,10 @@ export default async (type, params) => {
   }
 
   if (type === AUTH_LOGOUT) {
-    const loginrealm = localStorage.getItem('loginrealm')
-    if ( loginrealm ) {
-      localStorage.removeItem('loginrealm');
+    const logindomain = localStorage.getItem('logindomain')
+    if ( logindomain ) {
+      localStorage.removeItem('logindomain');
+      return Promise.resolve({ redirectTo: '/' }) && window.location.reload();
     } else {
       localStorage.removeItem('token');
       localStorage.removeItem('apikey');

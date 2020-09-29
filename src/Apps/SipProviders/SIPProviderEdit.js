@@ -123,13 +123,13 @@ const SIPProviderEdit = props => {
 
     const onFailure = (error) => {
         notify(`Could not edit extesions: ${error.message}`)
-        redirect('/Extensions');
+        redirect(props.basePath);
         refresh();
     };
 
     const onSuccess = ({ data }) => {
         notify(`Changes to post "${data.title}" saved`)
-        redirect('/Extensions');
+        redirect(props.basePath);
         refresh();
     };
     useAuthenticated()

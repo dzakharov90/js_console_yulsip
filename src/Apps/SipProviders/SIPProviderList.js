@@ -13,13 +13,7 @@ import {
 
 const SIPProviderFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
-            <SelectInput optionText="name" />
-        </ReferenceInput>
-        <ReferenceInput label="Extension" source="username" reference="users" allowEmpty>
-            <SelectInput optionText="extension" />
-        </ReferenceInput>
+        <TextInput label="Search by username" source="username" alwaysOn/>
     </Filter>
 );
 

@@ -40,7 +40,7 @@ const UCPSettings = forwardRef((props, ref) => {
     return (
         <MenuItemLink
             className={classes.menuItem}
-            to="/Profile"
+            to="/UCPSettings"
             primaryText="UCP Settings"
             leftIcon={<SettingsIcon />}
         >

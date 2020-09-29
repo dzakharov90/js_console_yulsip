@@ -13,20 +13,20 @@ import {
 
 const validatecrypto = choices(['true', 'false', 'optional'], 'Must be one of choice');
 
-const SIPProviderCreate = props => {
+const ACLCreate = props => {
     const notify = useNotify();
     const refresh = useRefresh();
     const redirect = useRedirect();
 
     const onFailure = (error) => {
         notify(`Could not edit extesions: ${error.message}`)
-        redirect('/Extensions');
+        redirect(props.basePath);
         refresh();
     };
 
     const onSuccess = ({ data }) => {
         notify(`Changes to post "${data.title}" saved`)
-        redirect('/Extensions');
+        redirect(props.basePath);
         refresh();
     };
     useAuthenticated()
@@ -53,4 +53,4 @@ const SIPProviderCreate = props => {
     )
 };
 
-export default SIPProviderCreate;
+export default ACLCreate;

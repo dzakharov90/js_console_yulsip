@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bb-tech/ra-treemenu": "^1.0.2",
     "@coreui/icons-react": "^1.0.1",
     "@coreui/react": "^3.0.4",
     "@lingui/react": "^2.9.1",

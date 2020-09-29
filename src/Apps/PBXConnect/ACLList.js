@@ -15,7 +15,7 @@ import {
 
 const ExtensionsFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search by extension" source="username" alwaysOn />
+        <TextInput label="Search by name" source="name" alwaysOn />
     </Filter>
 );
 
@@ -24,9 +24,8 @@ export const ExtensionsList = props => {
     return (
         <List filters={<ExtensionsFilter />} {...props} title="Extensions">
             <Datagrid>
-                <TextField source="username" label="Extensions" sortable={false} />
-                <TextField source="cidname" label="Caller ID Name" sortable={false} />
-                <TextField source="email_address" label="E-mail" sortable={false} />
+                <TextField source="name" label="Name" sortable={false} />
+                <TextField source="ip" label="IP Address" sortable={false} />
                 <EditButton />
                 <DeleteButton />
             </Datagrid>

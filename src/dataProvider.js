@@ -6,10 +6,15 @@ const DataProvider = {
     getList: (resource, params) => {
         const token = localStorage.getItem('token');
         const apikey = localStorage.getItem('apikey');
+        const logindomain = localStorage.getItem('logindomain');
         if( resource === 'Extensions' ) {
             const ExtensionsList = axios.get (`${APP_BASE_URL}/ExtensionsList`,{
                 params: {
                     apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
                 },
                 headers: {
                     'Accept': 'application/json',
@@ -17,10 +22,10 @@ const DataProvider = {
                 },
             })
             return ExtensionsList.then(res => {
-                console.log(res.data.data.extensions);
+                console.log(res.data.data);
                 return {
-                    data: res.data.data.extensions,
-                    total: res.data.total.count,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);
@@ -33,6 +38,10 @@ const DataProvider = {
             const TrunkList = axios.get (`${APP_BASE_URL}/TrunksList`,{
                 params: {
                     apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
                 },
                 headers: {
                     'Accept': 'application/json',
@@ -40,10 +49,64 @@ const DataProvider = {
                 },
             })
             return TrunkList.then(res => {
-                console.log(res.data.data.trunks);
+                console.log(res.data.data);
                 return {
-                    data: res.data.data.trunks,
-                    total: res.data.total.count,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'PBXs' ) {
+            const ACLList = axios.get (`${APP_BASE_URL}/ACLList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.name,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return ACLList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'Ivr' ) {
+            const IVRList = axios.get (`${APP_BASE_URL}/IVRList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.menu_name,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return IVRList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);
@@ -59,9 +122,9 @@ const DataProvider = {
             const cdrList = axios.get (`${APP_BASE_URL}/CDRList`, {
                 params: {
                     apikey: apikey,
+                    logindomain: logindomain,
                     page: params.pagination.page,
                     perPage: params.pagination.perPage,
-                    field: params.sort.field,
                     filter: params.filter.filter,
                     //order: params.sort.order,
                 },
@@ -73,8 +136,8 @@ const DataProvider = {
             return cdrList.then(res => {
                 console.log(res.data.data.cdrlist);
                 return {
-                    data: res.data.data.cdrlist,
-                    total: res.data.total.count,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);
@@ -90,11 +153,13 @@ const DataProvider = {
         console.log(params);
         const token = localStorage.getItem('token');
         const apikey = localStorage.getItem('apikey');
+        const logindomain = localStorage.getItem('logindomain');
         if ( resource === 'Extensions' ) {
             const getExtension = axios.get (`${APP_BASE_URL}/getExtension`,{
                 params: {
                     id: params.id,
                     apikey: apikey,
+                    logindomain: logindomain,
                 },
                 headers: {
                     'Accept': 'application/json',
@@ -102,9 +167,9 @@ const DataProvider = {
                 },
             })
             return getExtension.then(res => {
-                console.log(res.data.data.extension)
+                console.log(res.data)
                 return {
-                    data: res.data.data.extension,
+                    data: res.data.data,
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);
@@ -118,6 +183,7 @@ const DataProvider = {
                 params: {
                     id: params.id,
                     apikey: apikey,
+                    logindomain: logindomain,
                 },
                 headers: {
                     'Accept': 'application/json',
@@ -139,11 +205,13 @@ const DataProvider = {
     create: (resource, params,) => {
         const token = localStorage.getItem('token')
         const apikey = localStorage.getItem('apikey')
+        const logindomain = localStorage.getItem('logindomain');
         if ( resource === 'Extensions' ) {
             console.log(params)
             const ExtensionsCreate = axios.put(`${APP_BASE_URL}/ExtensionCreate`, params, {
                 params: {
                     apikey: apikey,
+                    logindomain: logindomain,
                     username: params.data.username,
                     password: params.data.password,
                     cidname: params.data.cidname,
@@ -176,6 +244,7 @@ const DataProvider = {
             const TrunkCreate = axios.put(`${APP_BASE_URL}/TrunkCreate`, params, {
                 params: {
                     apikey: apikey,
+                    logindomain: logindomain,
                     gateway_name: params.data.name,
                     username: params.data.username,
                     password: params.data.password,
@@ -210,11 +279,13 @@ const DataProvider = {
     delete: (resource, params) => {
         const token = localStorage.getItem('token')
         const apikey = localStorage.getItem('apikey')
+        const logindomain = localStorage.getItem('logindomain');
         if ( resource === 'Extensions' ) {
             const ExtensionDelete = axios.put(`${APP_BASE_URL}/ExtensionRemove`, params, {
                 params: {
                     id: params.id,
                     apikey: apikey,
+                    logindomain: logindomain,
                 },
                 headers: {
                     'x-auth-token': token,
@@ -236,11 +307,13 @@ const DataProvider = {
     deleteMany: (resource, params) => {
         const token = localStorage.getItem('token')
         const apikey = localStorage.getItem('apikey')
+        const logindomain = localStorage.getItem('logindomain');
         if ( resource === 'Extensions' ) {
             const ExtensionsDelete = axios.delete(`${APP_BASE_URL}/ExtensionsRemove`, params, {
                 params: {
                     id: params.ids,
                     apikey: apikey,
+                    logindomain: logindomain,
                 },
                 headers: {
                     'x-auth-token': token,
