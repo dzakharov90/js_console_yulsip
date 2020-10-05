@@ -13,7 +13,7 @@ import {
 
 const validatecrypto = choices(['true', 'false', 'optional'], 'Must be one of choice');
 
-const ACLCreate = props => {
+const SIPProviderCreate = props => {
     const notify = useNotify();
     const refresh = useRefresh();
     const redirect = useRedirect();
@@ -53,4 +53,4 @@ const ACLCreate = props => {
     )
 };
 
-export default ACLCreate;
+export default SIPProviderCreate;

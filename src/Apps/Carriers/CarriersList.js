@@ -12,19 +12,17 @@ import {
 
 const CarriersFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="Extension" source="username" reference="users" allowEmpty>
-            <SelectInput optionText="extension" />
-        </ReferenceInput>
+        <TextInput label="Search by name" source="name" alwaysOn />
+
     </Filter>
 );
 
 const CarriersList = props => (
     <List filters={<CarriersFilter />} {...props}>
         <Datagrid>
-            <TextField source="username" label="Extensions"/>
-            <TextField source="email_address" label="E-mail"/>
-            <TextField source="cidname" label="Caller ID Name"/>
+            <TextField source="name" label="Gateway Name"/>
+            <TextField source="address" label="Address"/>
+            <TextField source="pri_prefix" label="Destination Prefix"/>
             <EditButton />
         </Datagrid>
     </List>

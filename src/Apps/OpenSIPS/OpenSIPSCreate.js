@@ -19,7 +19,7 @@ import {
 import { Typography, Box, Toolbar } from '@material-ui/core';
 import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
-const IVRCreate = props => {
+const OpenSIPSCreate = props => {
     const notify = useNotify();
     const refresh = useRefresh();
     const redirect = useRedirect();
@@ -39,17 +39,12 @@ const IVRCreate = props => {
     return (
         <Create onFailure={onFailure} onSuccess={onSuccess} {...props}>
             <SimpleForm>
-            <TextInput label='Name' source="menu_name" />
-                <TextInput label="Long Greeting" source="greet_long" />
-                <TextInput label='Short Greeting' source="greet_short" />
-                <TextInput label='Invalid sound' source="invalid_sound" />
-                <TextInput label='Exit sound' source="exit_sound" />
-                <TextInput label='Input timeout' source="inter_digit_timeout" />
-                <TextInput label='Input max failures' source="max_failures" />
-                <TextInput label='Digit len' source="digit_len" />
+                <TextInput label='Name' source="gateway_name" />
+                <TextInput label="IP Address" source="ip" />
+                <TextInput label='Network mask' source="mask" />
             </SimpleForm>
         </Create>
     )
 };
 
-export default IVRCreate;
+export default OpenSIPSCreate;

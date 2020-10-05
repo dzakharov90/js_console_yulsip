@@ -146,11 +146,143 @@ const DataProvider = {
                 return Promise.reject(e);
             });
         }
+        if( resource === 'Carriers' ) {
+            const CarrierList = axios.get (`${APP_BASE_URL}/CarrierList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return CarrierList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'Emergency' ) {
+            const EmergencyList = axios.get (`${APP_BASE_URL}/EmergencyList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return EmergencyList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'Clients' ) {
+            const ClientList = axios.get (`${APP_BASE_URL}/ClientList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return ClientList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'Dispatcher' ) {
+            const ClientList = axios.get (`${APP_BASE_URL}/DispatcherList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return ClientList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if( resource === 'OpenSIPS' ) {
+            const ClientList = axios.get (`${APP_BASE_URL}/osipsList`,{
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    page: params.pagination.page,
+                    perPage: params.pagination.perPage,
+                    filter: params.filter.username,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return ClientList.then(res => {
+                console.log(res.data.data);
+                return {
+                    data: res.data.data,
+                    total: res.data.total,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
     },
     getOne: (resource, params) => {
-        console.log('DataProvider.GetOne Extension ');
-        console.log(resource);
-        console.log(params);
         const token = localStorage.getItem('token');
         const apikey = localStorage.getItem('apikey');
         const logindomain = localStorage.getItem('logindomain');
@@ -192,7 +324,99 @@ const DataProvider = {
             })
             return getTrunk.then(res => {
                 return {
-                    data: res.data.data.trunk,
+                    data: res.data.data,
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if ( resource === 'PBXs' ) {
+            const getACL = axios.get (`${APP_BASE_URL}/getACL`,{
+                params: {
+                    id: params.id,
+                    apikey: apikey,
+                    logindomain: logindomain,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return getACL.then(res => {
+                return {
+                    data: res.data.data,
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if ( resource === 'OpenSIPS' ) {
+            const getOsips = axios.get (`${APP_BASE_URL}/getOsips`,{
+                params: {
+                    id: params.id,
+                    apikey: apikey,
+                    logindomain: logindomain,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return getOsips.then(res => {
+                return {
+                    data: res.data.data,
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if ( resource === 'Dispatcher' ) {
+            const getDispatcher = axios.get (`${APP_BASE_URL}/getDispatcher`,{
+                params: {
+                    id: params.id,
+                    apikey: apikey,
+                    logindomain: logindomain,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return getDispatcher.then(res => {
+                return {
+                    data: res.data.data,
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
+        if ( resource === 'Carriers' ) {
+            const getCarrier = axios.get (`${APP_BASE_URL}/getCarrier`,{
+                params: {
+                    id: params.id,
+                    apikey: apikey,
+                    logindomain: logindomain,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'x-auth-token': token,
+                },
+            })
+            return getCarrier.then(res => {
+                return {
+                    data: res.data.data,
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);

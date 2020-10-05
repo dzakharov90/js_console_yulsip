@@ -13,19 +13,19 @@ import {
     useAuthenticated,
 } from 'react-admin';
 
-const ACLFilter = (props) => (
+const ExtensionsFilter = (props) => (
     <Filter {...props}>
         <TextInput label="Search by name" source="name" alwaysOn />
     </Filter>
 );
 
-export const ACLList = props => {
+export const OpenSIPSList = props => {
     useAuthenticated()
     return (
-        <List filters={<ACLFilter />} {...props} title="Extensions">
+        <List filters={<ExtensionsFilter />} {...props} title="Extensions">
             <Datagrid>
-                <TextField source="name" label="Name" sortable={false} />
-                <TextField source="ip" label="IP Address" sortable={false} />
+                <TextField source="address" label="IP Address" sortable={false} />
+                <TextField source="description" label="Description" sortable={false} />
                 <EditButton />
                 <DeleteButton />
             </Datagrid>
@@ -33,4 +33,4 @@ export const ACLList = props => {
     )
 };
 
-export default ACLList;
+export default OpenSIPSList;

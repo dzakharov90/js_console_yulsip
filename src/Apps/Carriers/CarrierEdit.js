@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Datagrid,
+    SimpleForm,
     Edit,
     EditButton,
     TextInput,
@@ -8,12 +8,15 @@ import {
 
 const CarrierEdit = props => (
     <Edit {...props}>
-        <Datagrid>
-            <TextInput source="id" />
-            <TextInput source="username" />
-            <TextInput source="cidname" />
-            <EditButton />
-        </Datagrid>
+        <SimpleForm>
+            <TextInput source="name" label="Gateway Name"/>
+            <TextInput source="address" label="Address"/>
+            <TextInput source="type" label="Type"/>
+            <TextInput source="probe_mode" label="Probe mode"/>
+            <TextInput source="state" label="State"/>
+            <TextInput source="pri_prefix" label="Destination Prefix"/>
+            <TextInput source="strip" label="Strip digits"/>
+        </SimpleForm>
     </Edit>
 );
 
