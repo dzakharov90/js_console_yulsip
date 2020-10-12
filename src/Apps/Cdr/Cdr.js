@@ -28,7 +28,7 @@ const CdrList = ( props, resources ) => {
     console.log(resources)
 
     return (
-        <List filters={<cdrfilter />} {...props} accept="audio/*" >
+        <List filters={<cdrfilter />} bulkActionButtons={false} {...props} accept="audio/*" >
             <Datagrid>
                 <TextField source='caller_id_number' label='From Number' sortable={false} />
                 <TextField source="destination_number" label='To Number' sortable={false} />

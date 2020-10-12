@@ -8,6 +8,7 @@ import {
     TextInput,
     SelectInput,
     ReferenceInput,
+    DeleteButton,
     useAuthenticated,
 } from 'react-admin';
 
@@ -28,6 +29,7 @@ const ClientList = props => {
                     <TextField source="client_domain" label="Client domain"/>
                     <TextField source="reseller_domain" label="Reseller"/>
                     <EditButton />
+                    <DeleteButton />
                 </Datagrid>
             </List>
         )
@@ -37,6 +39,7 @@ const ClientList = props => {
                 <Datagrid>
                     <TextField source="client_domain" label="Client domain"/>
                     <EditButton />
+                    <DeleteButton />
                 </Datagrid>
             </List>
         )

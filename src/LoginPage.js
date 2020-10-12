@@ -19,8 +19,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://yulsip.com/">
+        YulSIP Communications
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -30,32 +30,71 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
     height: '100vh',
+    justifyItems: 'center',
+    width:'100%',
   },
   image: {
+    height:'100vh',
+    alignContent:'center',
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    
   },
   paper: {
-    margin: theme.spacing(8, 3),
     display: 'flex',
+    justifyContent: 'flex-end',
+    justifyItems:'flex-end',
+    flexDirection: 'end',
+    alignContent:'center',
+    //paddingTop:'50%',
+    paddingRight:'40px',
+    background:'transparent',
+
+  },
+  paper2: {
+    display: 'flex',
+    height: '100vh',
+    width:'100vh',
+    justifyContent: 'flex-end',
     flexDirection: 'column',
-    alignItems: 'center',
+    //alignContent:'center',
+    //paddingLeft:'38%',
+    //float:'right',
+    background:'transparent',
+
+
   },
   avatar: {
+    display:'flex',
+    justifyItems:'center',
+    alignContent:'center',
+    justifyContent:'center',
+    left: '41%',
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '80%', // Fix IE 11 issue.
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent:'center',
+    width: '390px', // Fix IE 11 issue.
+    height: '530px',
     marginTop: theme.spacing(1),
+    background:'white',
+    borderRadius:'20px',
+    border: '5px solid gray',
+    WebkitBorderRadius:'20px',
+    paddingRight:'30px',
+    paddingLeft:'30px',
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(1, 0, 1),
   },
 }));
 
@@ -75,16 +114,16 @@ export default function SignInSide() {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
+      <Grid container className={classes.image} >
+      <Grid container className={classes.paper}>
+        <div>
+          <form className={classes.form} onSubmit={submit}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" justifyContent='center'>
             Sign in
           </Typography>
-          <form className={classes.form} onSubmit={submit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -144,8 +183,8 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="https://yulsip.com" variant="body2">
+                  {"Sign Up"}
                 </Link>
               </Grid>
             </Grid>
@@ -155,6 +194,7 @@ export default function SignInSide() {
             <Notification/>
           </form>
         </div>
+      </Grid>
       </Grid>
     </Grid>
   );

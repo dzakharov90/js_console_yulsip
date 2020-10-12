@@ -8,6 +8,7 @@ import {
     TextInput,
     SelectInput,
     ReferenceInput,
+    DeleteButton,
     useAuthenticated,
 } from 'react-admin';
 
@@ -30,6 +31,7 @@ const DispatcherList = props => {
                 <TextField source="region" label="Region" />
                 <TextField source="description" label="Description" />
                 <EditButton />
+                <DeleteButton />
             </Datagrid>
         </List>
     )

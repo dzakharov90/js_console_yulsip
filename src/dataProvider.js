@@ -432,7 +432,7 @@ const DataProvider = {
         const logindomain = localStorage.getItem('logindomain');
         if ( resource === 'Extensions' ) {
             console.log(params)
-            const ExtensionsCreate = axios.put(`${APP_BASE_URL}/ExtensionCreate`, params, {
+            const ExtensionsCreate = axios.put(`${APP_BASE_URL}/createExtension`, params, {
                 params: {
                     apikey: apikey,
                     logindomain: logindomain,
@@ -463,9 +463,34 @@ const DataProvider = {
                 return Promise.reject(e);
             });
         }
+        if ( resource === 'PBXs' ) {
+            console.log(params)
+            const ExtensionsCreate = axios.put(`${APP_BASE_URL}/createACL`, params, {
+                params: {
+                    apikey: apikey,
+                    logindomain: logindomain,
+                    name: params.data.name,
+                    ip: params.data.ip,
+                },
+                headers: {
+                    'x-auth-token': token,
+                    'Accept': 'application/json',
+                },
+            })
+            return ExtensionsCreate.then(res => {
+                return {
+                    data: { ...res.data.data.message, id: res.data.data.id },
+                };
+            }, ({ reason }) => {
+                return Promise.reject(reason);
+            }).catch((e)=>{
+                console.log(e);
+                return Promise.reject(e);
+            });
+        }
         if ( resource === 'Trunks' ) {
             console.log(params)
-            const TrunkCreate = axios.put(`${APP_BASE_URL}/TrunkCreate`, params, {
+            const TrunkCreate = axios.put(`${APP_BASE_URL}/createTrunk`, params, {
                 params: {
                     apikey: apikey,
                     logindomain: logindomain,

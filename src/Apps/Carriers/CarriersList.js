@@ -7,6 +7,7 @@ import {
     EditButton,
     TextInput,
     SelectInput,
+    DeleteButton,
     ReferenceInput,
 } from 'react-admin';
 
@@ -24,6 +25,7 @@ const CarriersList = props => (
             <TextField source="address" label="Address"/>
             <TextField source="pri_prefix" label="Destination Prefix"/>
             <EditButton />
+            <DeleteButton />
         </Datagrid>
     </List>
 );

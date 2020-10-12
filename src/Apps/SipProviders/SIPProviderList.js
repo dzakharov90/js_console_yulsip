@@ -8,6 +8,7 @@ import {
     TextInput,
     SelectInput,
     ReferenceInput,
+    DeleteButton,
     useAuthenticated,
 } from 'react-admin';
 
@@ -26,6 +27,7 @@ const SIPProviderList = props => {
                 <TextField source="username" label="Username" sortable={false} />
                 <TextField source="to_domain" label="Registrar" sortable={false} />
                 <EditButton />
+                <DeleteButton />
             </Datagrid>
         </List>
     )
