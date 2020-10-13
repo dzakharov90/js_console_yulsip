@@ -4,7 +4,6 @@ import {
     TextInput,
     SelectInput,
     SaveButton,
-    DeleteButton,
     FormWithRedirect,
     choices,
     BooleanInput,
@@ -12,8 +11,10 @@ import {
     useRefresh, 
     useRedirect,
     useAuthenticated,
+    ListButton,
 } from 'react-admin';
 import { Typography, Box, Toolbar } from '@material-ui/core';
+import ChevronLeft from '@material-ui/icons/ChevronLeft';
 
 const validatecrypto = choices(['true', 'false', 'optional'], 'Must be one of choice');
 
@@ -52,12 +53,6 @@ const SIPProviderForm = props => (
                             <Box flex={1} mr="0.5em">
                                 <TextInput label='Port' source="gateway_port" />
                             </Box>
-                        </Box>
-
-                        <Box flex={1} ml="1em">
-                            
-                            <Typography variant="h6" gutterBottom> </Typography>
-
                             <Box flex={1} mr="0.5em">
                                 <BooleanInput 
                                     defaultValue={false}
@@ -79,6 +74,9 @@ const SIPProviderForm = props => (
                                     { id: 'optional', name: 'optional' },
                                 ]} validate={validatecrypto}/>
                             </Box>
+                        </Box>
+
+                        <Box flex={1} ml="1em">
                             <hr></hr>
                             <Box flex={1} ml="1em">                            
                                 <Typography variant="h6" gutterBottom> Custom SIP-Headers </Typography>
@@ -105,10 +103,18 @@ const SIPProviderForm = props => (
                 <Toolbar>
                     <Box display="flex" justifyContent="space-between" width="100%">
                         <SaveButton
+                            label="Save"
+                            redirect={props.basePath}
+                            submitOnEnter={true}
                             saving={formProps.saving}
                             handleSubmitWithRedirect={formProps.handleSubmitWithRedirect}
                         />
-                        <DeleteButton record={formProps.record} />
+                        <ListButton
+                            basePath={props.basePath}
+                            label="Back"
+                            color="red"
+                            icon={<ChevronLeft />}
+                        />
                     </Box>
                 </Toolbar>
             </form>
