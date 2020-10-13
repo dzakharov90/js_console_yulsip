@@ -465,7 +465,7 @@ const DataProvider = {
         }
         if ( resource === 'PBXs' ) {
             console.log(params)
-            const ExtensionsCreate = axios.put(`${APP_BASE_URL}/createACL`, params, {
+            const PBXCreate = axios.put(`${APP_BASE_URL}/createACL`, params, {
                 params: {
                     apikey: apikey,
                     logindomain: logindomain,
@@ -477,7 +477,7 @@ const DataProvider = {
                     'Accept': 'application/json',
                 },
             })
-            return ExtensionsCreate.then(res => {
+            return PBXCreate.then(res => {
                 return {
                     data: { ...res.data.data.message, id: res.data.data.id },
                 };
@@ -494,13 +494,14 @@ const DataProvider = {
                 params: {
                     apikey: apikey,
                     logindomain: logindomain,
-                    gateway_name: params.data.name,
+                    gateway_name: params.data.gateway_name,
                     username: params.data.username,
                     password: params.data.password,
                     to_domain: params.data.to_domain,
+                    proxy: params.data.proxy,
                     from_domain: params.data.from_domain,
                     expiry: params.data.expiry,
-                    port: params.data.port,
+                    gateway_port: params.data.gateway_port,
                     diversion: params.data.diversion,
                     hidenum: params.data.hidenum,
                     crypto: params.data.crypto,
@@ -511,10 +512,9 @@ const DataProvider = {
                 },
             })
             return TrunkCreate.then(res => {
-                console.log(res.data.data.TrunkCreate);
+                console.log(res.data.data);
                 return {
-                    data: res.data.data.TrunkCreate,
-                    total: 5,  // Erfordert nun keinen speziellen Header mehr, CSE-Connect kompatibel
+                    data: res.data.data,
                 };
             }, ({ reason }) => {
                 return Promise.reject(reason);
